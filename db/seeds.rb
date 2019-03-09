@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+require "faker"
 st_vincent = House.create(house_address: "2108 St. Vincent Street")
 wynnbrook = House.create(house_address: "1112 Wynnbrook Road")
 
@@ -16,3 +16,8 @@ bad_cat = Cat.create(name: "Bad Cat", color: "Dark Grey", house_id: st_vincent.i
 Toy.create(name: "Scratch Board", cat_id: gracie.id)
 Toy.create(name: "Jingle Ball", cat_id: bad_cat.id)
 Toy.create(name: "Comfy Bed", cat_id: danny_devito.id)
+Toy.create(name: "Yarn", cat_id: bad_cat.id)
+
+10000.times do |cat|
+  Cat.create(name: Faker::Creature::Cat.name, color: ["red", "blue", "yellow", "brown", "black", "orange"].sample, house_id: [st_vincent.id, wynnbrook.id].sample)
+end
